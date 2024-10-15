@@ -56,10 +56,10 @@ function Header() {
 function Dog(props) {
   return (
     <div>
-      <img src={props.photo} alt="GSD called {props.name}" />
-      <h2>Name: {props.name}</h2>
-      <p>Sex: {props.sex}</p>
-      <p>Age: {props.age}</p>
+      <img src={props.dogObject.photo} alt="GSD called {props.name}" />
+      <h2>Name: {props.dogObject.name}</h2>
+      <p>Sex: {props.dogObject.sex}</p>
+      <p>Age: {props.dogObject.age}</p>
       <button>Find out more</button>
     </div>
   );
@@ -67,14 +67,13 @@ function Dog(props) {
 
 function CurrentDogs() {
   return (
-    <div>
+    <ul>
       <h2>Shepherds looking for a home</h2>
-      <div>
-        {currentDogs.map(dog => <Dog name={dog.name} sex={dog.sex} age={dog.age} photo={dog.photo}/>)}
-      </div>
-      
-    </div>
-  );
+      <li>
+        {currentDogs.map((dog, index) => (<Dog key={index} dogObject={dog}/>))}
+      </li>     
+    </ul>
+  )
 }
 
 function Footer() {
