@@ -78,18 +78,21 @@ function CurrentDogs() {
 
 function Footer() {
   const openHours = 12;
-  const closedHours = 16;
+  const closedHours = 15;
   const hour = new Date().getHours();
-  const isOpen = hour >= openHours && hour <= closedHours;
+  const isOpen = hour >= openHours && hour < closedHours;
+  console.log(hour, isOpen);
+  
 
   return (
     <footer>
       <p>Save Our Shepherds</p>
+      <p>We open for phone enquiries from 12:00 - 16:00hrs our time.</p>
       <p>
         We are currently {isOpen ? "open" : "closed"} for phone enquiries.
-        {isOpen ? "" : " Please use our contact form."}
+        {isOpen ? "" : " Please click the button below to use our contact form."}
       </p>
-      <p>We open for phone enquiries from 12:00 - 16:00hrs our time.</p>
+      {!isOpen ? <button>Contact Form</button> : null}
       <p>
         {new Date().toLocaleTimeString()} 0n {new Date().toLocaleDateString()}
       </p>
